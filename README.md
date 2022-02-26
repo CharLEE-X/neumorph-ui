@@ -224,7 +224,7 @@ var value by remember { mutableStateOf(false) }
 
 ## Coming soon
 
-Here is a list of components I'm planning to build in Neomorph UI style.
+Here is a list of components I'm planning to build in Neumorph UI style.
 - TextView 
 - Bottom Nav 
 - App bar 
