@@ -50,7 +50,7 @@ allprojects {
 }
 ```
 
-### <img width="30" align="center" src="https://slackmojis.com/emojis/32342-add/download"> Add the dependency ![](https://img.shields.io/github/v/release/adrianwitaszak/neumorph-ui)
+### <img width="30" align="center" src="https://slackmojis.com/emojis/32342-add/download"> Add the dependency ![](https://img.shields.io/github/v/tag/adrianwitaszak/neumorph-ui)
 ```bash
 dependencies {
   
