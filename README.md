@@ -78,9 +78,9 @@ dependencies {
 
 ### There is two main styles:
 
-###[Pressed style](android/src/main/java/com/adwi/neumorph/PressedStatic.kt) 
+###[Pressed style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PressedStatic.kt) 
 - Pressed Card style
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 
 ```bash
 MorphPressed(
@@ -103,9 +103,9 @@ MorphPressed(
 <img width="600" src="art/pressedlight.png"><img width="600" src="art/presseddark.png">
 
 
-###[Punched style](android/src/main/java/com/adwi/neumorph/PunchedStatic.kt)
+###[Punched style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PunchedStatic.kt)
 - Elevated Card style
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
 MorphPunched(
     onClick: () -> Unit = {},
@@ -131,9 +131,9 @@ MorphPunched(
 
 ---
 
-###[Button rounded](android/src/main/java/com/adwi/neumorph/ButtonRounded.kt)
+###[Button rounded](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonRounded.kt)
 - Elevated button
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
 MorphButtonRounded (
     elevation = 30.dp,
@@ -151,9 +151,9 @@ MorphButtonRounded (
 ```
 <img width="600" src="art/btnrl.gif"><img width="600" src="art/btnrd.gif">
 
-###[Button Oval](android/src/main/java/com/adwi/neumorph/ButtonOval.kt)
+###[Button Oval](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonOval.kt)
 - Circle button
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
 MorphButtonOval(
     elevation = 10.dp,
@@ -170,9 +170,9 @@ MorphButtonOval(
 ```
 <img width="600" src="art/btnovall.gif"><img width="600" src="art/btnovald.gif">
 
-###[Radio button](android/src/main/java/com/adwi/neumorph/RadioButton.kt)
+###[Radio button](neumorph/src/main/kotlin/com/adwi/neumorph/android/RadioButton.kt)
 - Animated radio button
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
 var value by remember { mutableStateOf(false) }
 
@@ -186,9 +186,9 @@ MorphRadioButton(
 ```
 <img width="600" src="art/radiol.gif"><img width="600" src="art/radiod.gif">
 
-###[Switch](android/src/main/java/com/adwi/neumorph/Switch.kt)
+###[Switch](neumorph/src/main/kotlin/com/adwi/neumorph/android/Switch.kt)
 - Animated switch
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
 var value by remember { mutableStateOf(false) }
 
@@ -205,9 +205,9 @@ MorphSwitch(
 ```
 <img width="600" src="art/switchl.gif"><img width="600" src="art/switchd.gif">
 
-###[Slider](android/src/main/java/com/adwi/neumorph/Slider.kt)
+[Slider](neumorph/src/main/kotlin/com/adwi/neumorph/android/Slider.kt)
 - Animated switch
-- [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
  MorphSlider(
     value = .6f,
