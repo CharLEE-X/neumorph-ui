@@ -220,7 +220,7 @@ var value by remember { mutableStateOf(false) }
     modifier = Modifier,
 )
 ```
-<img width="600" src="art/sliderl.gif"><img width="600" src="art/sliderd.gif">
+<img width="600" src="art/sliderl.png"><img width="600" src="art/sliderd.png">
 
 ## Coming soon
 
