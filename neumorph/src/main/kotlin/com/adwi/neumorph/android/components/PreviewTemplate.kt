@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.android.theme.MorphUiTheme
 
@@ -15,13 +16,15 @@ fun PreviewTemplate(
     modifier: Modifier = Modifier,
     darkTheme: Boolean = false,
     name: String = "Composable",
-    content: @Composable (content: @Composable () -> Unit) -> Unit
+    content: @Composable (content: @Composable () -> Unit) -> Unit,
 ) {
     MorphUiTheme(darkTheme = darkTheme) {
         MorphBackground {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier.fillMaxWidth().padding(24.dp)
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(24.dp)
             ) {
                 content { SampleText(text = name) }
             }
@@ -31,7 +34,7 @@ fun PreviewTemplate(
 
 @Composable
 fun SampleText(
-    text: String = "Morph UI"
+    text: String = "Morph UI",
 ) {
     Box(
         contentAlignment = Alignment.Center,
@@ -45,5 +48,29 @@ fun SampleText(
             fontWeight = FontWeight.Light,
             color = MaterialTheme.colors.onBackground
         )
+    }
+}
+
+@Preview(showBackground = true, name = "Light", widthDp = 600, heightDp = 600)
+@Composable
+private fun PreviewTemplateLight() {
+    PreviewTemplate(
+        darkTheme = false,
+    ) {
+        PreviewTemplate() {
+            it()
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "Dark", widthDp = 600, heightDp = 600)
+@Composable
+private fun PreviewTemplateDark() {
+    PreviewTemplate(
+        darkTheme = true,
+    ) {
+        PreviewTemplate() {
+            it()
+        }
     }
 }

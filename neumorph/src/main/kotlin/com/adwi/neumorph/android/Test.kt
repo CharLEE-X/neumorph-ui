@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.adwi.neumorph.android.components.PreviewTemplate
 import com.adwi.neumorph.android.theme.MorphUiTheme
 import com.adwi.neumorph.android.theme.AppColors
 
@@ -31,12 +32,12 @@ private fun TestDark() {
                 .background(MaterialTheme.colors.background)
                 .padding(10.dp),
         ) {
+            var value by remember { mutableStateOf(.5f)}
             MorphSlider(
-                value = .6f,
-                onValueChange = {},
+                value = value,
+                onValueChange = {value = it},
                 elevation = 5.dp,
                 cornerRadius = 10.dp,
-                backgroundColor = MaterialTheme.colors.primary,
                 modifier = Modifier,
             )
         }
