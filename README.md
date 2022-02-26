@@ -50,15 +50,17 @@ allprojects {
 }
 ```
 
-### <img width="30" align="center" src="https://slackmojis.com/emojis/32342-add/download"> Add the dependency [](https://img.shields.io/github/v/release/adrianwitaszak/neumorph-ui)
+### <img width="30" align="center" src="https://slackmojis.com/emojis/32342-add/download"> Add the dependency 
+<img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/adrianwitaszak/neumorph-ui">
 ```bash
 dependencies {
-  
     // Gradle
-    implementation 'com.github.adrianwitaszak:neumorph-ui:0.6.5'
+    implementation 'com.github.adrianwitaszak:neumorph-ui:tag'
     
     // Kotlin DSL
-    implementation("com.github.adrianwitaszak:neumorph-ui:0.6.5")
+    implementation("com.github.adrianwitaszak:neumorph-ui:tag")
+    
+    // Replace 'tag' with desired version
 }
 ```
 

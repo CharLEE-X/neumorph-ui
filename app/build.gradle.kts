@@ -58,7 +58,7 @@ dependencies {
     debugImplementation(Dependencies.composeToolingDebug)
     debugImplementation(Dependencies.composeManifestDebug)
 
-//    implementation("com.github.adrianwitaszak:neumorph-ui:0.6.93")
+//    implementation("com.github.adrianwitaszak:neumorph-ui:0.7.0")
 
     testImplementation(Dependencies.jUnit4)
     testImplementation(Dependencies.composeTest)
