@@ -149,7 +149,7 @@ MorphButtonRounded (
     }
 }
 ```
-<img width="600" src="art/btnrd.gif"><img width="600" src="art/btnrl.gif">
+<img width="600" src="art/btnrl.gif"><img width="600" src="art/btnrd.gif">
 
 ###[Button Oval](android/src/main/java/com/adwi/neumorph/ButtonOval.kt)
 - Circle button
@@ -184,7 +184,7 @@ MorphRadioButton(
     modifier = Modifier.size(40.dp)
 )
 ```
-<img width="600" src="art/radiod.gif"><img width="600" src="art/radiol.gif">
+<img width="600" src="art/radiol.gif"><img width="600" src="art/radiod.gif">
 
 ###[Switch](android/src/main/java/com/adwi/neumorph/Switch.kt)
 - Animated switch
@@ -203,14 +203,12 @@ MorphSwitch(
         .width(80.dp)
 )
 ```
-<img width="600" src="art/switchd.gif"><img width="600" src="art/switchl.gif">
+<img width="600" src="art/switchl.gif"><img width="600" src="art/switchd.gif">
 
 ###[Slider](android/src/main/java/com/adwi/neumorph/Slider.kt)
 - Animated switch
 - [Example usage](sample/src/main/java/com/adwi/neumorph/ui/screens/HomeScreen.kt)
 ```bash
-var value by remember { mutableStateOf(false) }
-
  MorphSlider(
     value = .6f,
     onValueChange = {},
