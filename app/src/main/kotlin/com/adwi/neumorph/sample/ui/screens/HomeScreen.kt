@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -19,6 +20,7 @@ import com.adwi.neumorph.android.*
 import com.adwi.neumorph.android.MorphSlider
 import com.adwi.neumorph.android.components.MorphIcon
 import com.adwi.neumorph.android.components.PreviewTemplate
+import com.adwi.neumorph.android.picker.HsvColor
 import com.adwi.neumorph.sample.ui.components.ItemPanel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -192,10 +194,44 @@ fun HomeScreen() {
             }
         }
         item {
+            val colorValue = remember { mutableStateOf(Color.Red) }
+
+            ItemPanel(
+                title = "Color picker",
+                elevationRange = 1f..20f,
+                cornerRadiusRange = 0f..20f,
+                onClick = { isExpanded ->
+                    isExpanded.scrollToItemIfExpanded(scope, lazyListState, 7)
+                }
+            ) { elevation, cornerRadius, color ->
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    MorphButtonOval(
+                        elevation = elevation,
+                        backgroundColor = colorValue.value,
+                        modifier = Modifier.size(70.dp),
+                        content = {  }
+                    )
+                    Spacer(modifier = Modifier.size(24.dp))
+                    MorphColorPicker(
+                        color = colorValue.value,
+                        onColorChanged = { hsvColor: HsvColor ->
+                            colorValue.value = hsvColor.toColor()
+                        },
+                    elevation = elevation,
+                    cornerRadius = cornerRadius,
+                    handleColor = color ?: Color.White
+                    )
+                }
+            }
+        }
+        item {
             ItemPanel(
                 title = "Coming soon",
                 onClick = { isExpanded ->
-                    isExpanded.scrollToItemIfExpanded(scope, lazyListState, 7)
+                    isExpanded.scrollToItemIfExpanded(scope, lazyListState, 8)
                 }
             ) { elevation, cornerRadius, color ->
                 MorphPressed(

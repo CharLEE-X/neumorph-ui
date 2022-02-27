@@ -48,6 +48,7 @@ tasks {
 dependencies {
     compileOnly("org.jetbrains.dokka:dokka-core:${Versions.dokka}")
     implementation("com.github.krottv:compose-sliders:0.1.4")
+    implementation("com.github.ajalt.colormath:colormath:3.2.0")
     implementation(Dependencies.lifecycle)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.accompanist)

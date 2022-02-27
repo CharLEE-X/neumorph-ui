@@ -39,8 +39,8 @@ fun ItemPanel(
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    var elevation by remember { mutableStateOf(10f) }
-    var cornerRadius by remember { mutableStateOf(10f) }
+    var elevation by remember { mutableStateOf(elevationRange.endInclusive / 4) }
+    var cornerRadius by remember { mutableStateOf(cornerRadiusRange.endInclusive / 2) }
     val (selectedColor, onColorSelected) = remember { mutableStateOf(pickerColors[0]) }
 
     Column {

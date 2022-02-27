@@ -14,7 +14,7 @@ import com.adwi.neumorph.android.neumorph.model.MorphStyle
 import com.adwi.neumorph.android.neumorph.shape.*
 
 
-internal fun ContentDrawScope. drawBackgroundShadows(
+internal fun ContentDrawScope.drawBackgroundShadows(
     morphShape: MorphShape, style: MorphStyle
 ) {
     val elevation = style.shadowElevation.toPx()

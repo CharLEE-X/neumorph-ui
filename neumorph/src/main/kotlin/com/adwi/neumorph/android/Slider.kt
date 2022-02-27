@@ -12,7 +12,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -25,6 +27,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.android.components.MorphIcon
+import com.adwi.neumorph.android.components.MorphSliderThumb
 import com.adwi.neumorph.android.components.PreviewTemplate
 import com.adwi.neumorph.android.neumorph.LightSource
 import com.adwi.neumorph.android.neumorph.neu
@@ -65,10 +68,12 @@ fun MorphSlider(
     lightSource: LightSource = LightSource.LEFT_TOP,
     backgroundColor: Color = MaterialTheme.colors.surface,
     handleColor: Color = MaterialTheme.colors.primary,
+    iconColor: Color = MaterialTheme.colors.onPrimary,
     handleSize: DpSize = DpSize(30.dp, 30.dp),
     lightShadowColor: Color = AppColors.lightShadow(),
     darkShadowColor: Color = AppColors.darkShadow(),
 ) {
+//    TODO("Add slider label")
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
 
@@ -128,7 +133,15 @@ fun MorphSlider(
                             scaleY = scaleState
                             scaleX = scaleState
                         }
-                )
+                ) {
+                    MorphIcon(
+                        icon = Icons.Default.Menu,
+                        tint = iconColor,
+                        modifier = Modifier
+                            .fillMaxSize(.4f)
+                            .rotate(90f)
+                    )
+                }
             },
         )
     }
@@ -176,45 +189,6 @@ private fun MorphTrack(
                     )
             )
         }
-    }
-}
-
-@Composable
-private fun MorphSliderThumb(
-    modifier: Modifier = Modifier,
-    offset: Dp,
-    size: Dp = 20.dp,
-    cornerRadius: Dp = 30.dp,
-    shape: Shape = RoundedCornerShape(cornerRadius),
-    elevation: Dp = 10.dp,
-    interactionSource: MutableInteractionSource = MutableInteractionSource(),
-    lightSource: LightSource = LightSource.LEFT_TOP,
-    handleColor: Color = MaterialTheme.colors.primary,
-    iconColor: Color = MaterialTheme.colors.onPrimary,
-    lightShadowColor: Color = AppColors.lightShadow(),
-    darkShadowColor: Color = AppColors.darkShadow(),
-) {
-    MorphPunched(
-        onClick = {},
-        cornerRadius = cornerRadius,
-        elevation = elevation,
-        shape = shape,
-        backgroundColor = handleColor,
-        lightShadowColor = lightShadowColor,
-        darkShadowColor = darkShadowColor,
-        interactionSource = interactionSource,
-        lightSource = lightSource,
-        modifier = modifier
-            .size(size)
-            .offset(x = offset),
-    ) {
-        MorphIcon(
-            icon = Icons.Default.Menu,
-            tint = iconColor,
-            modifier = Modifier
-                .fillMaxSize(.4f)
-                .rotate(90f)
-        )
     }
 }
 
