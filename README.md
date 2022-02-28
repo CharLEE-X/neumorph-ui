@@ -208,7 +208,8 @@ MorphSwitch(
 <img width="600" src="art/switchl.gif"><img width="600" src="art/switchd.gif">
 
 [Slider](neumorph/src/main/kotlin/com/adwi/neumorph/android/Slider.kt)
-- Animated switch
+- Animated slider
+- Optional label
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 ```bash
  MorphSlider(
