@@ -23,7 +23,6 @@ fun OptionsItem(
     value: Float,
     onValueChange: (Float) -> Unit,
     valueRange: ClosedFloatingPointRange<Float>,
-    steps: Int = 10,
     elevation: Dp = 4.dp,
     cornerRadius: Dp = 4.dp,
     backgroundColor: Color = MaterialTheme.colors.background,
@@ -39,7 +38,6 @@ fun OptionsItem(
             value = value,
             onValueChange = onValueChange,
             valueRange = valueRange,
-            steps = steps,
             backgroundColor = backgroundColor,
             labelColor = labelColor,
             cornerRadius = cornerRadius,
@@ -59,7 +57,6 @@ private fun OptionsItemLight() {
             value = 10f,
             onValueChange = {},
             valueRange = 1f..50f,
-            steps = 10,
         )
     }
 }
@@ -75,7 +72,6 @@ private fun OptionsItemDark() {
             value = 10f,
             onValueChange = {},
             valueRange = 1f..50f,
-            steps = 10,
         )
     }
 }

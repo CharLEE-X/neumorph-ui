@@ -12,9 +12,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -58,10 +56,10 @@ import com.github.krottv.compose.sliders.SliderValueHorizontal
 @Composable
 fun MorphSlider(
     modifier: Modifier = Modifier,
-    value: Float,
+    value: Float = 20f,
     onValueChange: (Float) -> Unit,
-    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
-    steps: Int = 0,
+    valueRange: ClosedFloatingPointRange<Float> = 0f..30f,
+    steps: Int = 20,
     onValueChangeFinished: (() -> Unit)? = null,
     cornerRadius: Dp = 30.dp,
     elevation: Dp = 10.dp,
@@ -73,7 +71,6 @@ fun MorphSlider(
     lightShadowColor: Color = AppColors.lightShadow(),
     darkShadowColor: Color = AppColors.darkShadow(),
 ) {
-//    TODO("Add slider label")
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
 
@@ -103,8 +100,8 @@ fun MorphSlider(
             thumbSizeInDp = handleSize,
             thumbHeightMax = false,
             modifier = Modifier.fillMaxWidth(),
-            track = { _, progress: Float, _, _, _, ->
-                onValueChange(progress)
+            track = { _, progress: Float, _, _, _ ->
+//                onValueChange(progress)
                 MorphTrack(
                     indicatorWidth = indicatorWidth,
                     cornerRadius = cornerRadius,
@@ -117,7 +114,7 @@ fun MorphSlider(
                     modifier = modifier
                 )
             },
-            thumb = { _, _, _, _, _, ->
+            thumb = { _, _, _, _, _ ->
                 MorphSliderThumb(
                     offset = offset,
                     size = handleSize.height,
@@ -198,9 +195,10 @@ private fun SliderLight() {
     PreviewTemplate(
         darkTheme = false,
     ) {
+        var value by remember { mutableStateOf(10f) }
         MorphSlider(
-            value = 5f,
-            onValueChange = {},
+            value = value,
+            onValueChange = { value = it },
             handleColor = MaterialTheme.colors.primary
         )
     }
@@ -212,9 +210,10 @@ private fun SliderDark() {
     PreviewTemplate(
         darkTheme = true,
     ) {
+        var value by remember { mutableStateOf(10f) }
         MorphSlider(
-            value = 5f,
-            onValueChange = {},
+            value = value,
+            onValueChange = { value = it },
             handleColor = MaterialTheme.colors.primary
         )
     }

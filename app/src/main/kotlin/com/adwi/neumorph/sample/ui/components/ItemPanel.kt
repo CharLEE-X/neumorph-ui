@@ -1,13 +1,15 @@
 package com.adwi.neumorph.sample.ui.components
 
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.*
@@ -28,20 +30,21 @@ fun ItemPanel(
     title: String,
     onClick: (isExpanded: Boolean) -> Unit = {},
     hasCornerRadius: Boolean = true,
-    elevationRange: ClosedFloatingPointRange<Float> =  0f..20f,
-    cornerRadiusRange: ClosedFloatingPointRange<Float> =  0f..40f,
-    steps: Int = 10,
+    elevationRange: ClosedFloatingPointRange<Float> = 0f..20f,
+    cornerRadiusRange: ClosedFloatingPointRange<Float> = 0f..40f,
     content: @Composable (
-        elevationState: Dp,
-        cornerRadiusState: Dp,
+        elevationState: Float,
+        cornerRadiusState: Float,
         currentColor: Color?,
     ) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    var elevation by remember { mutableStateOf(elevationRange.endInclusive / 4) }
-    var cornerRadius by remember { mutableStateOf(cornerRadiusRange.endInclusive / 2) }
+    var elevation by remember { mutableStateOf(10f) }
+    var cornerRadius by remember { mutableStateOf(20f) }
     val (selectedColor, onColorSelected) = remember { mutableStateOf(pickerColors[0]) }
+//    println("elevation = $elevation")
+//    println("cornerRadius = $cornerRadius")
 
     Column {
         ItemHeader(
@@ -51,8 +54,8 @@ fun ItemPanel(
                 onClick(expanded)
             },
             isExpanded = expanded,
-            contentElevation = elevation.toInt().dp,
-            contentCorners = cornerRadius.toInt().dp,
+            contentElevation = elevation,
+            contentCorners = cornerRadius,
             contentColor = selectedColor,
             content = { elevation, corners, color, padding ->
                 Box(
@@ -62,34 +65,36 @@ fun ItemPanel(
                 ) {
                     content(elevation, corners, color)
                 }
-            }
-        ) {
-            Column(
-                modifier = Modifier.padding(horizontal = 8.dp)
-            ) {
-                OptionsItem(
-                    title = "Elevation",
-                    value = elevation,
-                    onValueChange = { elevation = it },
-                    valueRange = elevationRange,
-                    steps = 10
-                )
-                if (hasCornerRadius) {
+            },
+            options = {
+                Column(
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                ) {
                     OptionsItem(
-                        title = "Corner radius",
-                        value = cornerRadius,
-                        onValueChange = { cornerRadius = it },
-                        valueRange = cornerRadiusRange,
-                        steps = steps
+                        title = "Elevation",
+                        value = elevation,
+                        onValueChange = {
+                            elevation = it
+                            println("newElevation = $elevation")
+                        },
+                        valueRange = elevationRange,
+                    )
+                    if (hasCornerRadius) {
+                        OptionsItem(
+                            title = "Corner radius",
+                            value = cornerRadius,
+                            onValueChange = { cornerRadius = it },
+                            valueRange = cornerRadiusRange,
+                        )
+                    }
+                    ColorPicker(
+                        colors = pickerColors,
+                        selectedColor = selectedColor,
+                        onColorSelected = onColorSelected
                     )
                 }
-                ColorPicker(
-                    colors = pickerColors,
-                    selectedColor = selectedColor,
-                    onColorSelected = onColorSelected
-                )
             }
-        }
+        )
     }
 }
 
@@ -99,12 +104,12 @@ fun ItemHeader(
     text: String,
     onClick: () -> Unit,
     isExpanded: Boolean = false,
-    contentElevation: Dp,
-    contentCorners: Dp,
+    contentElevation: Float,
+    contentCorners: Float,
     contentColor: Color?,
     content: @Composable (
-        elevationState: Dp,
-        cornerRadiusState: Dp,
+        elevationState: Float,
+        cornerRadiusState: Float,
         currentColor: Color?,
         paddingState: Dp,
     ) -> Unit,
@@ -179,8 +184,8 @@ fun HomeItemPreviewLight() {
     ) {
         ItemPanel(title = "Coming soon") { elevation, corners, color ->
             MorphPressed(
-                elevation = elevation,
-                cornerRadius = corners,
+                elevation = elevation.dp,
+                cornerRadius = corners.dp,
                 backgroundColor = color ?: MaterialTheme.colors.surface,
                 modifier = Modifier
                     .height(100.dp),
@@ -198,8 +203,8 @@ private fun HomeItemPreviewDark() {
     ) { text ->
         ItemPanel(title = "Coming soon") { elevation, corners, color ->
             MorphPressed(
-                elevation = elevation,
-                cornerRadius = corners,
+                elevation = elevation.dp,
+                cornerRadius = corners.dp,
                 backgroundColor = color ?: MaterialTheme.colors.surface,
                 modifier = Modifier
                     .height(100.dp),

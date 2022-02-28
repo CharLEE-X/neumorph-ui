@@ -17,7 +17,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.android.*
-import com.adwi.neumorph.android.MorphSlider
 import com.adwi.neumorph.android.components.MorphIcon
 import com.adwi.neumorph.android.components.PreviewTemplate
 import com.adwi.neumorph.android.picker.HsvColor
@@ -36,7 +35,7 @@ fun HomeScreen() {
         modifier = Modifier.fillMaxSize()
     ) {
         item {
-            var radioValue by remember { mutableStateOf(false) }
+            var radioValue by remember { mutableStateOf(true) }
             ItemPanel(
                 title = "Radio Button",
                 elevationRange = 1f..30f,
@@ -47,7 +46,7 @@ fun HomeScreen() {
             ) { elevation, _, color ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     MorphRadioButton(
-                        elevation = elevation,
+                        elevation = elevation.dp,
                         radioColor = color ?: MaterialTheme.colors.secondary,
                         value = radioValue,
                         onValueChange = { radioValue = !radioValue },
@@ -59,7 +58,7 @@ fun HomeScreen() {
             }
         }
         item {
-            var switchValue by remember { mutableStateOf(false) }
+            var switchValue by remember { mutableStateOf(true) }
             ItemPanel(
                 title = "Switch",
                 cornerRadiusRange = 0f..20f,
@@ -69,11 +68,11 @@ fun HomeScreen() {
             ) { elevation, cornerRadius, color ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     MorphSwitch(
-                        elevation = elevation,
+                        elevation = elevation.dp,
                         switchColor = color ?: MaterialTheme.colors.secondary,
                         value = switchValue,
                         onValueChange = { switchValue = !switchValue },
-                        cornerRadius = cornerRadius,
+                        cornerRadius = cornerRadius.dp,
                         modifier = Modifier
                             .height(40.dp)
                             .width(80.dp)
@@ -93,8 +92,8 @@ fun HomeScreen() {
                 }
             ) { elevation, cornerRadius, color ->
                 MorphButtonRounded(
-                    elevation = elevation,
-                    cornerRadius = cornerRadius,
+                    elevation = elevation.dp,
+                    cornerRadius = cornerRadius.dp,
                     backgroundColor = color ?: MaterialTheme.colors.surface,
                     modifier = Modifier
                         .height(70.dp)
@@ -117,19 +116,19 @@ fun HomeScreen() {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     MorphButtonOval(
-                        elevation = elevation,
+                        elevation = elevation.dp,
                         backgroundColor = color ?: MaterialTheme.colors.surface,
                         modifier = Modifier.size(70.dp),
                         content = { MorphIcon() }
                     )
                     MorphButtonOval(
-                        elevation = elevation,
+                        elevation = elevation.dp,
                         backgroundColor = color ?: MaterialTheme.colors.surface,
                         modifier = Modifier.size(70.dp),
                         content = { MorphIcon(icon = Icons.Default.Email) }
                     )
                     MorphButtonOval(
-                        elevation = elevation,
+                        elevation = elevation.dp,
                         backgroundColor = color ?: MaterialTheme.colors.surface,
                         modifier = Modifier.size(70.dp),
                         content = { MorphIcon(icon = Icons.Default.ShoppingCart) }
@@ -146,8 +145,8 @@ fun HomeScreen() {
                 }
             ) { elevation, cornerRadius, color ->
                 MorphPressed(
-                    elevation = elevation,
-                    cornerRadius = cornerRadius,
+                    elevation = elevation.dp,
+                    cornerRadius = cornerRadius.dp,
                     backgroundColor = color ?: MaterialTheme.colors.background,
                     modifier = Modifier
                         .height(100.dp),
@@ -164,8 +163,8 @@ fun HomeScreen() {
                 }
             ) { elevation, cornerRadius, color ->
                 MorphPunched(
-                    elevation = elevation,
-                    cornerRadius = cornerRadius,
+                    elevation = elevation.dp,
+                    cornerRadius = cornerRadius.dp,
                     backgroundColor = color ?: MaterialTheme.colors.surface,
                     modifier = Modifier
                         .height(100.dp)
@@ -187,8 +186,8 @@ fun HomeScreen() {
                 MorphSlider(
                     value = sliderValue,
                     onValueChange = { sliderValue = it },
-                    elevation = elevation,
-                    cornerRadius = cornerRadius,
+                    elevation = elevation.dp,
+                    cornerRadius = cornerRadius.dp,
                     handleColor = color ?: MaterialTheme.colors.primary
                 )
             }
@@ -209,10 +208,10 @@ fun HomeScreen() {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     MorphButtonOval(
-                        elevation = elevation,
+                        elevation = elevation.dp,
                         backgroundColor = colorValue.value,
                         modifier = Modifier.size(70.dp),
-                        content = {  }
+                        content = { }
                     )
                     Spacer(modifier = Modifier.size(24.dp))
                     MorphColorPicker(
@@ -220,9 +219,9 @@ fun HomeScreen() {
                         onColorChanged = { hsvColor: HsvColor ->
                             colorValue.value = hsvColor.toColor()
                         },
-                    elevation = elevation,
-                    cornerRadius = cornerRadius,
-                    handleColor = color ?: Color.White
+                        elevation = elevation.dp,
+                        cornerRadius = cornerRadius.dp,
+                        handleColor = color ?: Color.White
                     )
                 }
             }
@@ -235,8 +234,8 @@ fun HomeScreen() {
                 }
             ) { elevation, cornerRadius, color ->
                 MorphPressed(
-                    elevation = elevation,
-                    cornerRadius = cornerRadius,
+                    elevation = elevation.dp,
+                    cornerRadius = cornerRadius.dp,
                     backgroundColor = color ?: MaterialTheme.colors.background,
                     modifier = Modifier,
                     content = {

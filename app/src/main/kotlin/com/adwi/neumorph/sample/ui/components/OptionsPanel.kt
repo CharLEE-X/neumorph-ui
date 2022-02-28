@@ -16,17 +16,14 @@ private fun OptionsPanel(
         value = elevation,
         onValueChange = onElevationChange,
         valueRange = 0f..30f,
-        steps = 10
     )
     OptionsItem(
         title = "Corner radius",
         value = cornerRadius,
         onValueChange = onCornerRadiusChange,
         valueRange = 0f..50f,
-        steps = 10
     )
 }
-
 
 @Preview(showBackground = true, name = "Dark", widthDp = 600, heightDp = 600)
 @Composable
