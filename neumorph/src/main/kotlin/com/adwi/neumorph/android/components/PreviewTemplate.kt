@@ -1,14 +1,17 @@
 package com.adwi.neumorph.android.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.adwi.neumorph.android.theme.AppColors
 import com.adwi.neumorph.android.theme.MorphUiTheme
 
 @Composable
@@ -19,7 +22,22 @@ fun PreviewTemplate(
     content: @Composable (content: @Composable () -> Unit) -> Unit,
 ) {
     MorphUiTheme(darkTheme = darkTheme) {
-        MorphBackground {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(brush = Brush.verticalGradient(
+            if (darkTheme)
+                listOf(
+                    AppColors.Dark.BackgroundTop,
+                    AppColors.Dark.BackgroundBottom
+                )
+            else
+                listOf(
+                    AppColors.Light.BackgroundTop,
+                    AppColors.Light.BackgroundBottom
+                )
+        ))) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = modifier
@@ -69,7 +87,7 @@ private fun PreviewTemplateDark() {
     PreviewTemplate(
         darkTheme = true,
     ) {
-        PreviewTemplate() {
+        PreviewTemplate(darkTheme = true) {
             it()
         }
     }

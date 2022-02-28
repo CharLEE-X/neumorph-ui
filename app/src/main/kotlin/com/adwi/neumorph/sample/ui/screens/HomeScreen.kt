@@ -183,7 +183,7 @@ fun HomeScreen() {
                     isExpanded.scrollToItemIfExpanded(scope, lazyListState, 6)
                 }
             ) { elevation, cornerRadius, color ->
-                MorphSlider(
+                MorphSliderBar(
                     value = sliderValue,
                     onValueChange = { sliderValue = it },
                     elevation = elevation.dp,

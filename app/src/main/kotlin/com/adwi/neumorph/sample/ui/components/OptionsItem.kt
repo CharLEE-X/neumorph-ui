@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.android.components.PreviewTemplate
+import com.adwi.neumorph.android.components.MorphSlider
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -23,8 +24,8 @@ fun OptionsItem(
     value: Float,
     onValueChange: (Float) -> Unit,
     valueRange: ClosedFloatingPointRange<Float>,
-    elevation: Dp = 4.dp,
-    cornerRadius: Dp = 4.dp,
+    elevation: Dp = 10.dp,
+    cornerRadius: Dp = 10.dp,
     backgroundColor: Color = MaterialTheme.colors.background,
     labelColor: Color = MaterialTheme.colors.onBackground,
 ) {
@@ -34,7 +35,7 @@ fun OptionsItem(
             color = MaterialTheme.colors.onSurface
         )
         Spacer(modifier = Modifier.size(12.dp))
-        SliderWithLabel(
+        MorphSlider(
             value = value,
             onValueChange = onValueChange,
             valueRange = valueRange,

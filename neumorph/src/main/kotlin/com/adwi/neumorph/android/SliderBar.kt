@@ -54,7 +54,7 @@ import com.github.krottv.compose.sliders.SliderValueHorizontal
  * @param darkShadowColor color of darker shadow
  */
 @Composable
-fun MorphSlider(
+fun MorphSliderBar(
     modifier: Modifier = Modifier,
     value: Float = 20f,
     onValueChange: (Float) -> Unit,
@@ -85,7 +85,7 @@ fun MorphSlider(
 
     BoxWithConstraints(
         contentAlignment = Alignment.CenterStart,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxWidth()
     ) {
         val indicatorWidth = 1f / (valueRange.endInclusive - valueRange.start) * value
         val offset = (this.maxWidth - handleSize.height) * indicatorWidth
@@ -196,7 +196,7 @@ private fun SliderLight() {
         darkTheme = false,
     ) {
         var value by remember { mutableStateOf(10f) }
-        MorphSlider(
+        MorphSliderBar(
             value = value,
             onValueChange = { value = it },
             handleColor = MaterialTheme.colors.primary
@@ -211,7 +211,7 @@ private fun SliderDark() {
         darkTheme = true,
     ) {
         var value by remember { mutableStateOf(10f) }
-        MorphSlider(
+        MorphSliderBar(
             value = value,
             onValueChange = { value = it },
             handleColor = MaterialTheme.colors.primary

@@ -1,4 +1,4 @@
-package com.adwi.neumorph.sample.ui.components
+package com.adwi.neumorph.android.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -9,14 +9,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.android.MorphSlider
-import com.adwi.neumorph.android.components.PreviewTemplate
+import com.adwi.neumorph.android.MorphSliderBar
 import com.adwi.neumorph.android.neumorph.LightSource
 import com.adwi.neumorph.android.theme.AppColors
+import com.adwi.neumorph.sample.ui.components.SliderLabel
 
 @Composable
-fun SliderWithLabel(
+fun MorphSlider(
     modifier: Modifier = Modifier,
+    hasLabel: Boolean = true,
     value: Float = 10f,
     onValueChange: (Float) -> Unit,
     valueRange: ClosedFloatingPointRange<Float> = 0f..30f,
@@ -36,28 +37,33 @@ fun SliderWithLabel(
     labelColor: Color = MaterialTheme.colors.onBackground,
 ) {
     Column(modifier = modifier) {
-        BoxWithConstraints(
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            val offset = getSliderOffset(
-                value = value,
-                valueRange = valueRange,
-                boxWidth = maxWidth,
-                labelWidth = labelMinWidth + 8.dp
-            )
-            SliderLabel(
-                value = value.toInt(),
-                backgroundColor = backgroundColor,
-                labelColor = labelColor,
-                cornerRadius = cornerRadius,
-                elevation = elevation,
+        if (hasLabel) {
+            BoxWithConstraints(
                 modifier = Modifier
-                    .padding(start = offset)
-                    .size(labelSize.dp)
-            )
+                    .fillMaxWidth()
+            ) {
+                val offset = getSliderOffset(
+                    value = value,
+                    valueRange = valueRange,
+                    boxWidth = maxWidth,
+                    labelWidth = labelMinWidth + 8.dp
+                )
+                SliderLabel(
+                    value = value.toInt(),
+                    backgroundColor = backgroundColor,
+                    labelColor = labelColor,
+                    cornerRadius = cornerRadius,
+                    elevation = elevation,
+                    modifier = Modifier
+                        .padding(
+                            start = offset,
+                            bottom = 4.dp
+                        )
+                        .size(labelSize.dp)
+                )
+            }
         }
-        MorphSlider(
+        MorphSliderBar(
             value = value,
             onValueChange = onValueChange,
             valueRange = valueRange,
@@ -84,10 +90,12 @@ private fun OptionsSliderLight() {
         darkTheme = false,
     ) {
         var value by remember { mutableStateOf(10f) }
-        SliderWithLabel(
+        MorphSlider(
             value = value,
             onValueChange = { value = it },
-            handleColor = MaterialTheme.colors.primary
+            handleColor = MaterialTheme.colors.primary,
+            cornerRadius = 5.dp,
+            elevation = 10.dp
         )
     }
 }
@@ -99,10 +107,12 @@ private fun OptionsSliderDark() {
         darkTheme = true,
     ) {
         var value by remember { mutableStateOf(10f) }
-        SliderWithLabel(
+        MorphSlider(
             value = value,
             onValueChange = { value = it },
-            handleColor = MaterialTheme.colors.primary
+            handleColor = MaterialTheme.colors.primary,
+            cornerRadius = 5.dp,
+            elevation = 10.dp
         )
     }
 }
