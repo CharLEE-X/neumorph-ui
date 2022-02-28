@@ -2,6 +2,8 @@ package com.adwi.neumorph.android
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
@@ -13,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.android.theme.MorphUiTheme
 import com.adwi.neumorph.android.theme.AppColors
 import com.adwi.neumorph.android.components.MorphSlider
+import com.adwi.neumorph.android.components.PreviewTemplate
+import com.adwi.neumorph.android.components.SampleText
 
 private val lightBrush =
     Brush.verticalGradient(listOf(AppColors.Light.BackgroundTop, AppColors.Light.BackgroundBottom).reversed())
@@ -22,21 +26,13 @@ private val darkBrush =
 @Preview(showBackground = true, name = "Dark", widthDp = 600, heightDp = 300)
 @Composable
 private fun TestDark() {
-    MorphUiTheme(darkTheme = false) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .background(MaterialTheme.colors.background)
-                .padding(10.dp),
+    PreviewTemplate(darkTheme = true) {
+        MorphPunched(
+            elevation = 30.dp,
+            cornerRadius = 20.dp,
+            modifier = Modifier.fillMaxWidth(.7f).height(150.dp),
         ) {
-            var value by remember { mutableStateOf(.5f)}
-            MorphSlider(
-                value = value,
-                onValueChange = {value = it},
-                elevation = 5.dp,
-                cornerRadius = 10.dp,
-                modifier = Modifier,
-            )
+            SampleText(text = "Neumorph UI")
         }
     }
 }

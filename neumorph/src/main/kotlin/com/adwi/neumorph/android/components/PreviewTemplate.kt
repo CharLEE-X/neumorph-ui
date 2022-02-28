@@ -35,7 +35,7 @@ fun PreviewTemplate(
             else
                 listOf(
                     AppColors.Light.BackgroundTop,
-                    AppColors.Light.BackgroundBottom
+                    AppColors.Light.BackgroundBottom,
                 )
         ))) {
             Column(
@@ -62,9 +62,9 @@ fun SampleText(
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.h3,
+            style = MaterialTheme.typography.h4,
             fontWeight = FontWeight.Light,
-            color = MaterialTheme.colors.onBackground
+            color = MaterialTheme.colors.onSurface
         )
     }
 }
