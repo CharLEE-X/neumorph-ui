@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/adrianwitaszak/neumorph-ui">
-    <img src="art/banner.png">
+    <img src="art/banner2.png">
   </a>
 </p>
 <h1 align="center">Neumorph-UI</h1>
