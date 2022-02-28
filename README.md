@@ -15,7 +15,7 @@
 ![](https://img.shields.io/github/commit-activity/m/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/last-commit/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/repo-size/adrianwitaszak/neumorph-ui)
-  
+
 ![](https://img.shields.io/tokei/lines/github/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/languages/count/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/languages/top/adrianwitaszak/neumorph-ui)
