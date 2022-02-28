@@ -24,7 +24,7 @@
 ![](https://img.shields.io/badge/Jetpack%20-Compose-yellowgreen)
 </div>
 
-[ DOCS](https://adrianwitaszak.github.io/neumorph-ui/docs/index.html)
+[ DOCS](/docs/index.html)
 
  ✨ Features
 
