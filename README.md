@@ -8,19 +8,22 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/adrianwitaszak/neumorph-ui)
 [![](https://jitci.com/gh/adrianwitaszak/neumorph-ui/svg)](https://jitci.com/gh/adrianwitaszak/neumorph-ui)
+[![](https://jitpack.io/v/adrianwitaszak/neumorph-ui.svg)](https://jitpack.io/#adrianwitaszak/neumorph-ui)
+![](https://img.shields.io/github/v/release/adrianwitaszak/neumorph-ui)
+![](https://img.shields.io/badge/Jetpack%20-Compose-yellowgreen)
+
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=adrianwitaszak)
 ![](https://img.shields.io/github/stars/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/forks/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/watchers/adrianwitaszak/neumorph-ui)
+
 ![](https://img.shields.io/github/commit-activity/m/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/last-commit/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/repo-size/adrianwitaszak/neumorph-ui)
+
 ![](https://img.shields.io/tokei/lines/github/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/languages/count/adrianwitaszak/neumorph-ui)
 ![](https://img.shields.io/github/languages/top/adrianwitaszak/neumorph-ui)
-[![](https://jitpack.io/v/adrianwitaszak/neumorph-ui.svg)](https://jitpack.io/#adrianwitaszak/neumorph-ui)
-![](https://img.shields.io/github/v/release/adrianwitaszak/neumorph-ui)
-![](https://img.shields.io/badge/Jetpack%20-Compose-yellowgreen)
 </div>
 
 [ DOCS](https://adrianwitaszak.github.io/neumorph-ui/index.html)
