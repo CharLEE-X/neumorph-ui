@@ -14,6 +14,6 @@ object AppConfig {
     object Maven {
         const val groupId = "com.github.adrianwitaszak"
         const val artifactId = "neumorph-ui"
-        const val version = "0.7.5"
+        const val version = "0.7.7"
     }
 }
