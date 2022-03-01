@@ -3,7 +3,6 @@
     <img src="art/banner2.png">
   </a>
 </p>
-<h1 align="center">Neumorph-UI</h1>
 <div align="center">
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/adrianwitaszak/neumorph-ui)
@@ -29,10 +28,36 @@
 ![](https://img.shields.io/github/milestones/open/adrianwitaszak/neumorph-ui)
 
 </div>
+<h1 align="center">Neumorph-UI</h1>
+<p>Neumorph UI is an Android UI Library for Jetpack Compose with beautiful reusable components that are easy to use. 
+It used drawing to Canvas to create views, draw custom shapes and shadows. 
+The library is released to Jitpack and is available for anyone now.
+The library lets everyone create pretty UI's quick and easily.</p>
 
-[ DOCS](https://adrianwitaszak.github.io/neumorph-ui/index.html)
 
-✨ Features
+### Navigation:
+
+---
+- [Features](#features-)
+- [Styles](#styles)
+  - [Pressed](#pressed)
+  - [Punched](#punched)
+- [Components](#components)
+  - [Button Rounded](#buttonrounded) 
+  - [Button Oval](#buttonoval) 
+  - [Radio button](#radio-button) 
+  - [Switch](#switch) 
+  - [Slider](#slider) 
+  - [Color picker](#color-picker)
+  - [Coming soon](#coming-soon)
+- [Documentation](https://adrianwitaszak.github.io/neumorph-ui/index.html)
+- [Installation](#installation-)
+- [Contributing](#contributing-)
+- [Author](#author-)
+- [Licence](#license-img-width40-srchttpsemojisslackmojiscomemojisimages164351746134922read-the-rulesgif1643517461)
+- [References](#reference)
+
+## Features ✨
 
 ---
 
@@ -42,7 +67,228 @@
 - ⚙️ Whole package of design resources and development tools.
 - 🎨 Powerful theme customization in every detail.
 
-📦 Install
+
+
+## Styles
+
+---
+
+### Pressed
+
+- Pressed Card style
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/PressedStatic.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+MorphPressed(
+    onClick: () -> Unit = {},
+    elevation = 10.dp,
+    cornerRadius = 30.dp,
+    shape: Shape = RoundedCornerShape(cornerRadius),
+    backgroundColor = MaterialTheme.colors.background,
+    lightShadowColor = AppColors.lightShadow(),
+    darkShadowColor = AppColors.darkShadow(),
+    border = null,
+    scale = 1f,
+    lightSource = LightSource.LEFT_TOP,
+    invertedBackgroundColors = false,
+    hasIndication = false,
+    modifier = Modifier.height(100.dp),
+    content = { Text(text = "MorphPressed") }
+) 
+```
+<div align="center">
+<img width="400" src="art/pressedlight.png"><img width="400" src="art/presseddark.png">
+</div>
+
+## Punched
+
+- Elevated Card style
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/PunchedStatic.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+MorphPunched(
+    onClick: () -> Unit = {},
+    elevation = 10.dp,
+    cornerRadius = 30.dp,
+    shape: Shape = RoundedCornerShape(cornerRadius),
+    backgroundColor = MaterialTheme.colors.background,
+    lightShadowColor = AppColors.lightShadow(),
+    darkShadowColor = AppColors.darkShadow(),
+    border = null,
+    scale = 1f,
+    lightSource = LightSource.LEFT_TOP,
+    invertedBackgroundColors = false,
+    hasIndication = false,
+    modifier = Modifier.height(100.dp),
+    content = { Text(text = "MorphPressed") }
+)
+```
+<div align="center">
+<img width="400" src="art/punchedlight.png"><img width="400" src="art/puncheddark.png">
+</div>
+
+## Components
+
+---
+
+### ButtonRounded
+
+- Elevated button style
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonRounded.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+MorphButtonRounded (
+    elevation = 30.dp,
+    cornerRadius = 25.dp,
+    lightSource = LightSource.LEFT_TOP,
+    modifier = Modifier.align(Alignment.Center)
+) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(MaterialTheme.colors.surface)
+    ) {
+        SampleText("ButtonRounded")
+    }
+}
+```
+<div align="center">
+<img width="600" src="art/btnrl.gif"><img width="600" src="art/btnrd.gif">
+</div>
+
+### ButtonOval
+
+- Circle button
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonOval.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+MorphButtonOval(
+    elevation = 10.dp,
+    backgroundColor = MaterialTheme.colors.background,
+    contentColor = MaterialTheme.colors.onBackground,
+    modifier = Modifier.size(120.dp),
+    content = {
+        MorphIcon(
+            tint = MaterialTheme.colors.onSurface,
+            modifier = Modifier.size(40.dp)
+        )
+    }
+)
+```
+<div align="center">
+<img width="600" src="art/btnovall.gif"><img width="600" src="art/btnovald.gif">
+</div>
+
+### Radio Button
+
+- Animated radio button
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/RadioButton.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+var value by remember { mutableStateOf(false) }
+
+MorphRadioButton(
+    elevation = 10.dp,
+    radioColor = MaterialTheme.colors.secondary,
+    value = value,
+    onValueChange = { value = !value },
+    modifier = Modifier.size(40.dp)
+)
+```
+<div align="center">
+<img width="600" src="art/radiol.gif"><img width="600" src="art/radiod.gif">
+</div>
+
+### Switch
+
+- Animated switch
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/Switch.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+var value by remember { mutableStateOf(false) }
+
+MorphSwitch(
+    elevation = 10.dp,
+    cornerRadius = 10.dp,
+    switchColor = MaterialTheme.colors.secondary,
+    value = value,
+    onValueChange = { value = !value },
+    modifier = Modifier
+        .height(40.dp)
+        .width(80.dp)
+)
+```
+
+<div align="center">
+<img width="600" src="art/switchl.gif"><img width="600" src="art/switchd.gif">
+</div>
+
+### Slider
+
+- Animated slider
+- Optional label
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/SliderWithLabel.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+val colorValue = remember { mutableStateOf(Color.Green) }
+
+MorphColorPicker(
+    color = colorValue.value,
+    onColorChanged = { hsvColor: HsvColor ->
+        colorValue.value = hsvColor.toColor()
+    },
+    elevation = 20.dp,
+    cornerRadius = 30.dp,
+    handleColor = Color.DarkGray,
+    modifier = Modifier.height(30.dp)
+)
+```
+
+<div align="center">
+<img width="600" src="art/sliderl.gif"><img width="600" src="art/sliderd.gif">
+</div>
+
+### Color picker
+
+- [See code](neumorph/src/main/kotlin/com/adwi/neumorph/android/ColorPicker.kt)
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+ MorphSlider(
+    value = .6f,
+    onValueChange = {},
+    elevation = 5.dp,
+    cornerRadius = 10.dp,
+    backgroundColor = MaterialTheme.colors.primary,
+    modifier = Modifier,
+)
+```
+<div align="center">
+<img width="600" src="art/pickerl.gif"><img width="600" src="art/pickerd.gif">
+</div>
+
+## Coming soon
+
+---
+
+Here is a list of components I'm planning to build in Neumorph UI style.
+
+- TextField
+- Bottom Nav
+- App bar
+- Popup
+- Circular progress indicator
+- Dial
+- Snackbar
+
+
+## Installation 📦
 
 ---
 
@@ -81,209 +327,11 @@ dependencies {
 1. Run `git clone https://github.com:adrianwitaszak/neumorph-ui.git` command to clone project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
 
-🔨 Usage
+## Contributing 🤝
 
 ---
 
-### Two main styles:
-
-[Pressed style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PressedStatic.kt)
-
-- Pressed Card style
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-MorphPressed(
-    onClick: () -> Unit = {},
-    elevation = 10.dp,
-    cornerRadius = 30.dp,
-    shape: Shape = RoundedCornerShape(cornerRadius),
-    backgroundColor = MaterialTheme.colors.background,
-    lightShadowColor = AppColors.lightShadow(),
-    darkShadowColor = AppColors.darkShadow(),
-    border = null,
-    scale = 1f,
-    lightSource = LightSource.LEFT_TOP,
-    invertedBackgroundColors = false,
-    hasIndication = false,
-    modifier = Modifier.height(100.dp),
-    content = { Text(text = "MorphPressed") }
-) 
-```
-
-<img width="600" src="art/pressedlight.png"><img width="600" src="art/presseddark.png">
-
-[Punched style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PunchedStatic.kt)
-
-- Elevated Card style
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-MorphPunched(
-    onClick: () -> Unit = {},
-    elevation = 10.dp,
-    cornerRadius = 30.dp,
-    shape: Shape = RoundedCornerShape(cornerRadius),
-    backgroundColor = MaterialTheme.colors.background,
-    lightShadowColor = AppColors.lightShadow(),
-    darkShadowColor = AppColors.darkShadow(),
-    border = null,
-    scale = 1f,
-    lightSource = LightSource.LEFT_TOP,
-    invertedBackgroundColors = false,
-    hasIndication = false,
-    modifier = Modifier.height(100.dp),
-    content = { Text(text = "MorphPressed") }
-)
-```
-
-<img width="600" src="art/punchedlight.png"><img width="600" src="art/puncheddark.png">
-
-## Components
-
----
-
-[Button rounded](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonRounded.kt)
-
-- Elevated button
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-MorphButtonRounded (
-    elevation = 30.dp,
-    cornerRadius = 25.dp,
-    lightSource = LightSource.LEFT_TOP,
-    modifier = Modifier.align(Alignment.Center)
-) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(MaterialTheme.colors.surface)
-    ) {
-        SampleText("ButtonRounded")
-    }
-}
-```
-
-<img width="600" src="art/btnrl.gif"><img width="600" src="art/btnrd.gif">
-
-[Button Oval](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonOval.kt)
-
-- Circle button
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-MorphButtonOval(
-    elevation = 10.dp,
-    backgroundColor = MaterialTheme.colors.background,
-    contentColor = MaterialTheme.colors.onBackground,
-    modifier = Modifier.size(120.dp),
-    content = {
-        MorphIcon(
-            tint = MaterialTheme.colors.onSurface,
-            modifier = Modifier.size(40.dp)
-        )
-    }
-)
-```
-
-<img width="600" src="art/btnovall.gif"><img width="600" src="art/btnovald.gif">
-
-[Radio button](neumorph/src/main/kotlin/com/adwi/neumorph/android/RadioButton.kt)
-
-- Animated radio button
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-var value by remember { mutableStateOf(false) }
-
-MorphRadioButton(
-    elevation = 10.dp,
-    radioColor = MaterialTheme.colors.secondary,
-    value = value,
-    onValueChange = { value = !value },
-    modifier = Modifier.size(40.dp)
-)
-```
-
-<img width="600" src="art/radiol.gif"><img width="600" src="art/radiod.gif">
-
-[Switch](neumorph/src/main/kotlin/com/adwi/neumorph/android/Switch.kt)
-
-- Animated switch
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-var value by remember { mutableStateOf(false) }
-
-MorphSwitch(
-    elevation = 10.dp,
-    cornerRadius = 10.dp,
-    switchColor = MaterialTheme.colors.secondary,
-    value = value,
-    onValueChange = { value = !value },
-    modifier = Modifier
-        .height(40.dp)
-        .width(80.dp)
-)
-```
-
-<img width="600" src="art/switchl.gif"><img width="600" src="art/switchd.gif">
-
-[Slider](neumorph/src/main/kotlin/com/adwi/neumorph/android/Slider.kt)
-
-- Animated slider
-- Optional label
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
-val colorValue = remember { mutableStateOf(Color.Green) }
-
-MorphColorPicker(
-    color = colorValue.value,
-    onColorChanged = { hsvColor: HsvColor ->
-        colorValue.value = hsvColor.toColor()
-    },
-    elevation = 20.dp,
-    cornerRadius = 30.dp,
-    handleColor = Color.DarkGray,
-    modifier = Modifier.height(30.dp)
-)
-```
-
-<img width="600" src="art/sliderl.gif"><img width="600" src="art/sliderd.gif">
-
-[Color Picker](neumorph/src/main/kotlin/com/adwi/neumorph/android/ColorPicker.kt)
-
-- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
-
-```bash
- MorphSlider(
-    value = .6f,
-    onValueChange = {},
-    elevation = 5.dp,
-    cornerRadius = 10.dp,
-    backgroundColor = MaterialTheme.colors.primary,
-    modifier = Modifier,
-)
-```
-
-<img width="600" src="art/pickerl.gif"><img width="600" src="art/pickerd.gif">
-
-## Coming soon
-
-Here is a list of components I'm planning to build in Neumorph UI style.
-
-- TextField
-- Bottom Nav
-- App bar
-- Popup
-- Circular progress indicator
-- Dial
-- Snackbar
-
-# Samples
-
-## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Read our [contributing guide](doc/CONTRIBUTING.md) and let's build a better antd together.
 
@@ -292,7 +340,7 @@ as [pull requests](https://github.com/adrianwitaszak/neumorph-ui/pulls) or
 as [GitHub issues](https://github.com/adrianwitaszak/neumorph-ui/issues). If you'd like to improve code, check out the
 Development Instructions and have a good time! :)
 
-## ⭐ Author
+## Author ⭐
 
 [<img width="20" src="https://emojis.slackmojis.com/emojis/images/1643514782/7926/twitter.png?1643514782">](https://twitter.com/adrianwita)
 @adrianwita
@@ -302,7 +350,7 @@ Development Instructions and have a good time! :)
 
 [<img width="400" src="https://helloimjessa.files.wordpress.com/2021/06/bmc-button.png">](https://www.buymeacoffee.com/adrianwitay)
 
-## <img width="40" src="https://emojis.slackmojis.com/emojis/images/1643517461/34922/read-the-rules.gif?1643517461"> License
+## License <img width="40" src="https://emojis.slackmojis.com/emojis/images/1643517461/34922/read-the-rules.gif?1643517461">
 
 ```
 MIT License
@@ -325,7 +373,7 @@ WHETHER IN AN ACTION OF  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTIO
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
-Reference:
+## Reference:
 
 - [Android Jetpack Compose Color Picker](https://github.com/godaddy/compose-color-picker)
 - [ComposeColorPicker](https://github.com/serbelga/ComposeColorPicker)
