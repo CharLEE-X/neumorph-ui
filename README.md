@@ -59,8 +59,6 @@ The library lets everyone create pretty UI's quick and easily.</p>
 
 ## Features ✨
 
----
-
 - 🌈 Enterprise-class UI designed for Android.
 - 📦 A set of high-quality Jetpack Compose components out of the box.
 - 🛡 Written in Kotlin.
@@ -71,7 +69,6 @@ The library lets everyone create pretty UI's quick and easily.</p>
 
 ## Styles
 
----
 
 ### Pressed
 
@@ -131,7 +128,6 @@ MorphPunched(
 
 ## Components
 
----
 
 ### ButtonRounded
 
@@ -275,7 +271,6 @@ MorphColorPicker(
 
 ## Coming soon
 
----
 
 Here is a list of components I'm planning to build in Neumorph UI style.
 
@@ -290,7 +285,6 @@ Here is a list of components I'm planning to build in Neumorph UI style.
 
 ## Installation 📦
 
----
 
  <img width="30" align="center" src="https://slackmojis.com/emojis/28070-gradle-elephant/download"> Add it in your root build.gradle at the end of repositories:
 
@@ -329,7 +323,6 @@ dependencies {
 
 ## Contributing 🤝
 
----
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 

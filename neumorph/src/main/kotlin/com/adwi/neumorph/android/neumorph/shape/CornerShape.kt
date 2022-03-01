@@ -6,7 +6,6 @@ sealed class CornerShape {
 
 }
 
-object None : CornerShape()
 
 object Oval : CornerShape()
 

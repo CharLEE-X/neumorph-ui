@@ -45,7 +45,8 @@ fun MorphButtonRounded(
     val isPressed by interactionSource.collectIsPressedAsState()
     PressedSpec(
         isPressed = isPressed,
-        elevation = elevation, cornerRadius = cornerRadius
+        elevation = elevation,
+        cornerRadius = cornerRadius
     ) { elevationState, cornerRadiusState, scaleState ->
         MorphSurface(
             onClick = onClick,

@@ -21,6 +21,7 @@ import com.adwi.neumorph.android.*
 import com.adwi.neumorph.android.components.MorphIcon
 import com.adwi.neumorph.android.components.PreviewTemplate
 import com.adwi.neumorph.android.picker.HsvColor
+import com.adwi.neumorph.android.theme.MorphUiTheme
 import com.adwi.neumorph.sample.ui.components.ItemPanel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -35,6 +36,11 @@ fun HomeScreen() {
         state = lazyListState,
         modifier = Modifier.fillMaxSize()
     ) {
+        item {
+            MorphUiTheme {
+                NeumorphicPreviewLight()
+            }
+        }
         item {
             var radioValue by remember { mutableStateOf(true) }
             ItemPanel(
