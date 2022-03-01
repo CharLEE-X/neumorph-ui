@@ -4,19 +4,30 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.drag
 import androidx.compose.foundation.gestures.forEachGesture
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.adwi.neumorph.android.components.PreviewTemplate
+import com.adwi.neumorph.android.neumorph.LightSource
+import com.adwi.neumorph.android.neumorph.neu
+import com.adwi.neumorph.android.neumorph.shape.Punched
+import com.adwi.neumorph.android.neumorph.shape.RoundedCorner
+import com.adwi.neumorph.android.theme.AppColors
 
 /**
- * Hue side bar Component that invokes onHueChanged when the value is mutated.
+ * Hue sidebar Component that invokes onHueChanged when the value is mutated.
  *
  * @param modifier modifiers to set to the hue bar.
  * @param currentColor the initial color to set on the hue bar.
@@ -27,35 +38,48 @@ internal fun HueBar(
     modifier: Modifier = Modifier,
     currentColor: HsvColor,
     onHueChanged: (Float) -> Unit,
+    barThickness: Dp = 30.dp,
     handleColor: Color = Color.White,
+    cornerRadius: Dp = 20.dp,
+    elevation: Dp = 10.dp,
+    lightShadowColor: Color = AppColors.lightShadow(),
+    darkShadowColor: Color = AppColors.darkShadow(),
+    lightSource: LightSource = LightSource.LEFT_TOP,
 ) {
     val rainbowBrush = remember {
         Brush.horizontalGradient(getRainbowColors())
     }
-    Box(modifier = Modifier.fillMaxSize()) {
-
-        Canvas(
-            modifier = modifier
-                .fillMaxSize()
-                .align(Alignment.Center)
-                .pointerInput(Unit) {
-                    forEachGesture {
-                        awaitPointerEventScope {
-                            val down = awaitFirstDown()
-                            onHueChanged(getHueFromPoint(down.position.x, size.width.toFloat()))
-                            drag(down.id) { change ->
-                                change.consumePositionChange()
-                                onHueChanged(getHueFromPoint(change.position.x, size.width.toFloat()))
-                            }
+    Canvas(
+        modifier = modifier
+            .fillMaxSize()
+            .height(barThickness)
+            .pointerInput(Unit) {
+                forEachGesture {
+                    awaitPointerEventScope {
+                        val down = awaitFirstDown()
+                        onHueChanged(getHueFromPoint(down.position.x, size.width.toFloat()))
+                        drag(down.id) { change ->
+                            change.consumePositionChange()
+                            onHueChanged(getHueFromPoint(change.position.x, size.width.toFloat()))
                         }
                     }
                 }
-        ) {
-            drawRect(rainbowBrush)
+            }
+            .neu(
+                lightShadowColor = lightShadowColor,
+                darkShadowColor = darkShadowColor,
+                shadowElevation = elevation,
+                lightSource = lightSource,
+                shape = Punched(RoundedCorner(cornerRadius))
+            )
+    ) {
+        drawRoundRect(
+            brush = rainbowBrush,
+            cornerRadius = CornerRadius(cornerRadius.value, cornerRadius.value)
+        )
 
-            val huePoint = getPointFromHue(color = currentColor, width = this.size.width)
+        val huePoint = getPointFromHue(color = currentColor, width = this.size.width)
         drawHorizontalSelector(huePoint, color = currentColor.toColor(), handleColor)
-        }
     }
 }
 
@@ -73,7 +97,7 @@ private fun getRainbowColors(): List<Color> {
         Color(0xFFFFFF00),
         Color(0xFFFF8000),
         Color(0xFFFF0000),
-    ).reversed()
+    )
 }
 
 private fun getPointFromHue(color: HsvColor, width: Float): Float {
@@ -83,4 +107,38 @@ private fun getPointFromHue(color: HsvColor, width: Float): Float {
 private fun getHueFromPoint(x: Float, width: Float): Float {
     val newY = x.coerceIn(0f, width)
     return 360f - newY * 360f / width
+}
+
+@Preview(showBackground = true, name = "Light", widthDp = 600, heightDp = 600)
+@Composable
+private fun HueBarLight() {
+    PreviewTemplate(
+        darkTheme = false,
+    ) {
+        val colorValue by remember { mutableStateOf(HsvColor.from(Color.Green)) }
+        HueBar(
+            currentColor = colorValue,
+            onHueChanged = { colorValue.value = it },
+            cornerRadius = 40.dp,
+            elevation = 10.dp,
+            modifier = Modifier.height(30.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Dark", widthDp = 600, heightDp = 600)
+@Composable
+private fun HueBarDark() {
+    PreviewTemplate(
+        darkTheme = true,
+    ) {
+        val colorValue by remember { mutableStateOf(HsvColor.from(Color.Green)) }
+        HueBar(
+            currentColor = colorValue,
+            onHueChanged = {},
+            cornerRadius = 20.dp,
+            elevation = 10.dp,
+            modifier = Modifier.height(30.dp)
+        )
+    }
 }

@@ -32,7 +32,7 @@
 
 [ DOCS](https://adrianwitaszak.github.io/neumorph-ui/index.html)
 
- ✨ Features
+✨ Features
 
 ---
 
@@ -42,7 +42,7 @@
 - ⚙️ Whole package of design resources and development tools.
 - 🎨 Powerful theme customization in every detail.
 
- 📦 Install
+📦 Install
 
 ---
 
@@ -81,13 +81,14 @@ dependencies {
 1. Run `git clone https://github.com:adrianwitaszak/neumorph-ui.git` command to clone project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
 
- 🔨 Usage
+🔨 Usage
 
 ---
 
 ### Two main styles:
 
-[Pressed style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PressedStatic.kt) 
+[Pressed style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PressedStatic.kt)
+
 - Pressed Card style
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
 
@@ -109,12 +110,14 @@ MorphPressed(
     content = { Text(text = "MorphPressed") }
 ) 
 ```
+
 <img width="600" src="art/pressedlight.png"><img width="600" src="art/presseddark.png">
 
-
 [Punched style](neumorph/src/main/kotlin/com/adwi/neumorph/android/PunchedStatic.kt)
+
 - Elevated Card style
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
 ```bash
 MorphPunched(
     onClick: () -> Unit = {},
@@ -133,16 +136,18 @@ MorphPunched(
     content = { Text(text = "MorphPressed") }
 )
 ```
-<img width="600" src="art/punchedlight.png"><img width="600" src="art/puncheddark.png">
 
+<img width="600" src="art/punchedlight.png"><img width="600" src="art/puncheddark.png">
 
 ## Components
 
 ---
 
 [Button rounded](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonRounded.kt)
+
 - Elevated button
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
 ```bash
 MorphButtonRounded (
     elevation = 30.dp,
@@ -158,11 +163,14 @@ MorphButtonRounded (
     }
 }
 ```
+
 <img width="600" src="art/btnrl.gif"><img width="600" src="art/btnrd.gif">
 
 [Button Oval](neumorph/src/main/kotlin/com/adwi/neumorph/android/ButtonOval.kt)
+
 - Circle button
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
 ```bash
 MorphButtonOval(
     elevation = 10.dp,
@@ -177,11 +185,14 @@ MorphButtonOval(
     }
 )
 ```
+
 <img width="600" src="art/btnovall.gif"><img width="600" src="art/btnovald.gif">
 
 [Radio button](neumorph/src/main/kotlin/com/adwi/neumorph/android/RadioButton.kt)
+
 - Animated radio button
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
 ```bash
 var value by remember { mutableStateOf(false) }
 
@@ -193,11 +204,14 @@ MorphRadioButton(
     modifier = Modifier.size(40.dp)
 )
 ```
+
 <img width="600" src="art/radiol.gif"><img width="600" src="art/radiod.gif">
 
 [Switch](neumorph/src/main/kotlin/com/adwi/neumorph/android/Switch.kt)
+
 - Animated switch
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
 ```bash
 var value by remember { mutableStateOf(false) }
 
@@ -212,12 +226,36 @@ MorphSwitch(
         .width(80.dp)
 )
 ```
+
 <img width="600" src="art/switchl.gif"><img width="600" src="art/switchd.gif">
 
 [Slider](neumorph/src/main/kotlin/com/adwi/neumorph/android/Slider.kt)
+
 - Animated slider
 - Optional label
 - [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
+```bash
+val colorValue = remember { mutableStateOf(Color.Green) }
+
+MorphColorPicker(
+    color = colorValue.value,
+    onColorChanged = { hsvColor: HsvColor ->
+        colorValue.value = hsvColor.toColor()
+    },
+    elevation = 20.dp,
+    cornerRadius = 30.dp,
+    handleColor = Color.DarkGray,
+    modifier = Modifier.height(30.dp)
+)
+```
+
+<img width="600" src="art/sliderl.gif"><img width="600" src="art/sliderd.gif">
+
+[Color Picker](neumorph/src/main/kotlin/com/adwi/neumorph/android/ColorPicker.kt)
+
+- [Example usage](app/src/main/kotlin/com/adwi/neumorph/sample/ui/screens/HomeScreen.kt)
+
 ```bash
  MorphSlider(
     value = .6f,
@@ -228,39 +266,44 @@ MorphSwitch(
     modifier = Modifier,
 )
 ```
-<img width="600" src="art/sliderl.gif"><img width="600" src="art/sliderd.gif">
+
+<img width="600" src="art/pickerl.gif"><img width="600" src="art/pickerd.gif">
 
 ## Coming soon
 
 Here is a list of components I'm planning to build in Neumorph UI style.
-- TextView 
-- Bottom Nav 
-- App bar 
-- Popup 
-- Circular progress indicator 
-- Dial 
-- Color Picker Bar
+
+- TextField
+- Bottom Nav
+- App bar
+- Popup
+- Circular progress indicator
+- Dial
 - Snackbar
 
-
-#Samples
+# Samples
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Read our [contributing guide](doc/CONTRIBUTING.md) and let's build a better antd together.
 
-We welcome all contributions. Please read our [CONTRIBUTING.md](doc/CONTRIBUTING.md) first. You can submit any ideas as [pull requests](https://github.com/adrianwitaszak/neumorph-ui/pulls) or as [GitHub issues](https://github.com/adrianwitaszak/neumorph-ui/issues). If you'd like to improve code, check out the Development Instructions and have a good time! :)
+We welcome all contributions. Please read our [CONTRIBUTING.md](doc/CONTRIBUTING.md) first. You can submit any ideas
+as [pull requests](https://github.com/adrianwitaszak/neumorph-ui/pulls) or
+as [GitHub issues](https://github.com/adrianwitaszak/neumorph-ui/issues). If you'd like to improve code, check out the
+Development Instructions and have a good time! :)
 
 ## ⭐ Author
 
-[<img width="20" src="https://emojis.slackmojis.com/emojis/images/1643514782/7926/twitter.png?1643514782">](https://twitter.com/adrianwita) @adrianwita
+[<img width="20" src="https://emojis.slackmojis.com/emojis/images/1643514782/7926/twitter.png?1643514782">](https://twitter.com/adrianwita)
+@adrianwita
 
-[<img width="20" src="https://emojis.slackmojis.com/emojis/images/1643514111/711/linkedin.png?1643514111">](https://twitter.com/adrianwita) @adrian-witaszak
-
+[<img width="20" src="https://emojis.slackmojis.com/emojis/images/1643514111/711/linkedin.png?1643514111">](https://twitter.com/adrianwita)
+@adrian-witaszak
 
 [<img width="400" src="https://helloimjessa.files.wordpress.com/2021/06/bmc-button.png">](https://www.buymeacoffee.com/adrianwitay)
 
 ## <img width="40" src="https://emojis.slackmojis.com/emojis/images/1643517461/34922/read-the-rules.gif?1643517461"> License
+
 ```
 MIT License
 
@@ -282,8 +325,8 @@ WHETHER IN AN ACTION OF  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTIO
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
-
 Reference:
+
 - [Android Jetpack Compose Color Picker](https://github.com/godaddy/compose-color-picker)
 - [ComposeColorPicker](https://github.com/serbelga/ComposeColorPicker)
 - [compose-neumorphism](https://github.com/sridhar-sp/compose-neumorphism)

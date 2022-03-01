@@ -1,5 +1,6 @@
 package com.adwi.neumorph.sample.ui.screens
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -197,8 +198,8 @@ fun HomeScreen() {
 
             ItemPanel(
                 title = "Color picker",
-                elevationRange = 1f..20f,
-                cornerRadiusRange = 0f..20f,
+                elevationRange = 1f..40f,
+                cornerRadiusRange = 0f..40f,
                 onClick = { isExpanded ->
                     isExpanded.scrollToItemIfExpanded(scope, lazyListState, 7)
                 }
@@ -221,7 +222,7 @@ fun HomeScreen() {
                         },
                         elevation = elevation.dp,
                         cornerRadius = cornerRadius.dp,
-                        handleColor = color ?: Color.White
+                        handleColor = color ?: if (isSystemInDarkTheme()) Color.DarkGray else Color.LightGray
                     )
                 }
             }
@@ -241,7 +242,7 @@ fun HomeScreen() {
                     content = {
                         Text(
                             text =
-                            "EditText \nBottom Nav \nApp bar \nPopup \nCircular progress indicator \nDial \nColor Picker Bar",
+                            "TextField \nBottom Nav \nApp bar \nPopup \nCircular progress indicator \nDial",
                             color = MaterialTheme.colors.onSurface,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.padding(24.dp)
