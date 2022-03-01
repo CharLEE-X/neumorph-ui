@@ -200,7 +200,7 @@ fun HomeItemPreviewLight() {
 private fun HomeItemPreviewDark() {
     PreviewTemplate(
         darkTheme = true,
-    ) { text ->
+    ) {
         ItemPanel(title = "Coming soon") { elevation, corners, color ->
             MorphPressed(
                 elevation = elevation.dp,

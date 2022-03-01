@@ -14,6 +14,7 @@ fun Header(
 ) {
     Text(
         text = text,
-        style = style
+        style = style,
+        modifier = modifier
     )
 }
