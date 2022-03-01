@@ -116,7 +116,7 @@ fun MorphRadioButton(
 @Preview(showBackground = true, name = "Light", widthDp = 200, heightDp = 200)
 @Composable
 private fun MorphRadioButtonLightPreview() {
-    PreviewTemplate(darkTheme = false, name = "MorphCardPunched") { text ->
+    PreviewTemplate(darkTheme = false, name = "MorphCardPunched") {
         MorphRadioButton(value = true, onValueChange = {})
     }
 }
@@ -124,7 +124,7 @@ private fun MorphRadioButtonLightPreview() {
 @Preview(showBackground = true, name = "Dark", widthDp = 200, heightDp = 200)
 @Composable
 private fun MorphRadioButtonDarkPreview() {
-    PreviewTemplate(darkTheme = true, name = "MorphCardPunched") { text ->
+    PreviewTemplate(darkTheme = true, name = "MorphCardPunched") {
         MorphRadioButton(value = true, onValueChange = {})
     }
 }

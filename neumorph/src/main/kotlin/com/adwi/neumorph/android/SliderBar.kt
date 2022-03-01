@@ -100,7 +100,7 @@ fun MorphSliderBar(
             thumbSizeInDp = handleSize,
             thumbHeightMax = false,
             modifier = Modifier.fillMaxWidth(),
-            track = { _, progress: Float, _, _, _ ->
+            track = { _, _: Float, _, _, _ ->
 //                onValueChange(progress)
                 MorphTrack(
                     indicatorWidth = indicatorWidth,

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "${AppConfig.namespace}.neumorph"
+    namespace = "${AppConfig.namespace}.neumorph.android"
     compileSdk = AppConfig.compileSdk
 
     defaultConfig {
