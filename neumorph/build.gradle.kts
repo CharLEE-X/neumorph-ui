@@ -57,7 +57,7 @@ dependencies {
     implementation(Dependencies.androidXCoreKtx)
     implementation(Dependencies.composeActivity)
     implementation(Dependencies.composeToolingPreview)
-    implementation(Dependencies.composeConstraintLayout)
+    api(Dependencies.composeConstraintLayout)
     debugImplementation(Dependencies.composeToolingDebug)
     debugImplementation(Dependencies.composeManifestDebug)
 

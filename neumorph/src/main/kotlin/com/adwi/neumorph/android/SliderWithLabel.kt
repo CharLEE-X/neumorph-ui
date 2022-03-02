@@ -1,4 +1,4 @@
-package com.adwi.neumorph.android.components
+package com.adwi.neumorph.android
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.android.MorphSliderBar
+import com.adwi.neumorph.android.components.PreviewTemplate
 import com.adwi.neumorph.android.neumorph.LightSource
 import com.adwi.neumorph.android.theme.AppColors
 import com.adwi.neumorph.sample.ui.components.SliderLabel

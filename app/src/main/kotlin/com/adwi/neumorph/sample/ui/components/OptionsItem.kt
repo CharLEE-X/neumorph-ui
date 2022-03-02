@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.android.components.PreviewTemplate
-import com.adwi.neumorph.android.components.MorphSlider
+import com.adwi.neumorph.android.MorphSlider
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable

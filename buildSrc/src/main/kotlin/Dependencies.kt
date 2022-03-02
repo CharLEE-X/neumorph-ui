@@ -1,5 +1,5 @@
 object Versions {
-    internal const val gradle = "7.0.0"
+    internal const val gradle = "7.1.2"
     internal const val kotlin = "1.6.10"
     const val dokka = "1.6.0"
     internal const val androidCore = "1.7.0"
