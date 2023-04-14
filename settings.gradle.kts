@@ -5,19 +5,24 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://jitpack.io") } // TODO: Publish to mavenCentral
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 rootProject.name = "neumorph-ui"
 
 include(
-    ":app",
-    ":neumorph"
+    ":neumorph:effect",
+    ":neumorph:components",
+)
+
+include(
+    ":samples:androidApp",
 )

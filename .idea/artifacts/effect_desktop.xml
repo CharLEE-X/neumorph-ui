@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="effect-desktop">
+    <output-path>$PROJECT_DIR$/neumorph/effect/build/libs</output-path>
+    <root id="archive" name="effect-desktop.jar">
+      <element id="module-output" name="neumorph-ui.neumorph.effect.desktopMain" />
+    </root>
+  </artifact>
+</component>
