@@ -4,6 +4,8 @@ package com.adwi.neumorph.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -48,14 +50,14 @@ fun MorphSwitch(
     modifier: Modifier = Modifier,
     value: Boolean,
     onValueChange: () -> Unit,
-    height: Dp = 100.dp,
-    width: Dp = 200.dp,
-    cornerRadius: Dp = 30.dp,
+    height: Dp = 40.dp,
+    width: Dp = 80.dp,
+    cornerRadius: Dp = 20.dp,
     shape: Shape = RoundedCornerShape(cornerRadius),
     elevation: Dp = 10.dp,
     lightSource: LightSource = LightSource.LEFT_TOP,
     backgroundColor: Color = MaterialTheme.colors.surface,
-    switchColor: Color = MaterialTheme.colors.primary,
+    switchColor: Color = MaterialTheme.colors.secondary,
     lightShadowColor: Color? = null,
     darkShadowColor: Color? = null,
 ) {
@@ -68,8 +70,11 @@ fun MorphSwitch(
         animationSpec = tween(200),
     )
     val translateXState by animateDpAsState(
-        targetValue = if (value) ((width / 2) + 10.dp) else 0.dp,
-        animationSpec = tween(200),
+        targetValue = if (value) (width + cornerRadius + elevation) else 0.dp,
+        animationSpec = spring(
+            stiffness = 500f,
+            dampingRatio = 0.6f
+        ),
     )
 
     Box(

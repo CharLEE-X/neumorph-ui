@@ -73,15 +73,8 @@ fun HomeScreen() {
             var switchValue by remember { mutableStateOf(true) }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 MorphSwitch(
-                    elevation = 10.dp,
-                    switchColor = MaterialTheme.colors.secondary,
-                    lightSource = LightSource.LEFT_TOP,
                     value = switchValue,
                     onValueChange = { switchValue = !switchValue },
-                    cornerRadius = 20.dp,
-                    modifier = Modifier
-                        .height(40.dp)
-                        .width(80.dp)
                 )
                 Spacer(modifier = Modifier.size(12.dp))
                 Text(text = "Switch")
