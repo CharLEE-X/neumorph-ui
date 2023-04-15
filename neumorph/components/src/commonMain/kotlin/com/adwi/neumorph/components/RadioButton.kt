@@ -1,6 +1,7 @@
 package com.adwi.neumorph.components
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -49,13 +50,14 @@ fun MorphRadioButton(
     radioColor: Color = MaterialTheme.colors.primary,
     lightShadowColor: Color? = null,
     darkShadowColor: Color? = null,
+    indicatorScale: Float = .8f
 ) {
     val elevationState by animateDpAsState(
         targetValue = if (value) elevation + 5.dp else elevation,
         animationSpec = tween(PRESS_SWITCH_DURATION)
     )
     val scaleState by animateFloatAsState(
-        targetValue = if (value) .8f else 1.2f,
+        targetValue = if (value) indicatorScale else 1.2f,
         animationSpec = spring(
             dampingRatio = Spring.DampingRatioMediumBouncy,
             stiffness = Spring.StiffnessMedium
@@ -69,24 +71,34 @@ fun MorphRadioButton(
         )
     )
 
-    MorphSurface(
-        onClick = onValueChange,
-        cornerRadius = 0.dp,
-        backgroundColor = backgroundColor,
-        contentColor = Color.Transparent,
-        border = null,
-        scale = 1f,
-        interactionSource = MutableInteractionSource(),
-        hasIndication = false,
+    Box(
+        contentAlignment = Alignment.Center,
         modifier = modifier
-            .neu(
-                lightShadowColor = lightShadowColor,
-                darkShadowColor = darkShadowColor,
-                shadowElevation = elevationState,
-                lightSource = lightSource,
-                shape = Pressed(Oval)
+            .clickable(
+                onClick = onValueChange,
+                indication = null,
+                interactionSource = MutableInteractionSource()
             )
     ) {
+        MorphSurface(
+            onClick = onValueChange,
+            cornerRadius = 0.dp,
+            backgroundColor = backgroundColor,
+            contentColor = Color.Transparent,
+            border = null,
+            scale = 1f,
+            interactionSource = MutableInteractionSource(),
+            hasIndication = false,
+            modifier = Modifier
+                .fillMaxSize()
+                .neu(
+                    lightShadowColor = lightShadowColor,
+                    darkShadowColor = darkShadowColor,
+                    shadowElevation = elevationState,
+                    lightSource = lightSource,
+                    shape = Pressed(Oval)
+                )
+        ) { }
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier

@@ -31,7 +31,10 @@ object Dependencies {
         const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
         const val ui = "androidx.compose.ui:ui:${Versions.jetpackCompose}"
         const val material = "androidx.compose.material:material:${Versions.composeMaterial}"
+        const val iconsExtended = "androidx.compose.material:material-icons-extended:${Versions.composeMaterial}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:${Versions.composeConstraintLayout}"
+        const val preview = "androidx.compose.ui:ui-tooling-preview:${Versions.jetpackCompose}"
+        const val tooling = "androidx.compose.ui:ui-tooling:${Versions.jetpackCompose}"
     }
 
     object ComposeMultiplatform {

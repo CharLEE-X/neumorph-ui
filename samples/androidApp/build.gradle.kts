@@ -40,13 +40,13 @@ dependencies {
     implementation(project(Modules.COMPONENTS))
     implementation(project(Modules.EFFECT))
 
-//    implementation(Dependencies.AndroidX.lifecycle)
     implementation(Dependencies.JetpackCompose.activity)
-    implementation(compose.ui)
-    implementation(compose.material)
-    implementation(compose.materialIconsExtended)
-    implementation(compose.preview)
+    implementation(Dependencies.JetpackCompose.ui)
+    implementation(Dependencies.JetpackCompose.material)
+    implementation(Dependencies.JetpackCompose.iconsExtended)
     implementation(Dependencies.JetpackCompose.constraintLayout)
+    implementation(Dependencies.JetpackCompose.preview)
+    implementation(Dependencies.JetpackCompose.tooling)
 
 //    implementation("com.github.adrianwitaszak:neumorph-ui:0.7.7")
 }
