@@ -3,6 +3,7 @@
 package com.adwi.neumorph.components
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -21,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.adwi.neumorph.components.composables.MorphIcon
@@ -47,6 +48,8 @@ fun MorphSwitch(
     modifier: Modifier = Modifier,
     value: Boolean,
     onValueChange: () -> Unit,
+    height: Dp = 100.dp,
+    width: Dp = 200.dp,
     cornerRadius: Dp = 30.dp,
     shape: Shape = RoundedCornerShape(cornerRadius),
     elevation: Dp = 10.dp,
@@ -58,17 +61,21 @@ fun MorphSwitch(
 ) {
     val switchColorState by animateColorAsState(
         targetValue = if (value) switchColor else MaterialTheme.colors.primaryVariant,
-        animationSpec = tween(200)
+        animationSpec = tween(200),
     )
     val contentColorState by animateColorAsState(
         targetValue = if (value) MaterialTheme.colors.onSecondary else MaterialTheme.colors.onPrimary,
-        animationSpec = tween(200)
+        animationSpec = tween(200),
+    )
+    val translateXState by animateDpAsState(
+        targetValue = if (value) ((width / 2) + 10.dp) else 0.dp,
+        animationSpec = tween(200),
     )
 
     Box(
         modifier = modifier
-            .height(100.dp)
-            .width(200.dp)
+            .height(height)
+            .width(width)
             .wrapContentSize()
     ) {
         MorphPressed(
@@ -83,25 +90,24 @@ fun MorphSwitch(
             modifier = Modifier,
             content = {}
         )
-        Row(
-            modifier = Modifier.fillMaxSize(),
+        RoundedIndicator(
+            onValueChange = onValueChange,
+            cornerRadius = cornerRadius,
+            switchColor = switchColorState,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .fillMaxWidth(.5f)
+                .graphicsLayer {
+                    translationX = translateXState.value
+                }
         ) {
-            RoundedIndicator(
-                onValueChange = onValueChange,
-                cornerRadius = cornerRadius,
-                switchColor = switchColorState,
+            MorphIcon(
+                icon = Icons.Default.Menu,
+                tint = contentColorState,
                 modifier = Modifier
-                    .layoutId("switch")
-                    .fillMaxWidth(.5f)
-            ) {
-                MorphIcon(
-                    icon = Icons.Default.Menu,
-                    tint = contentColorState,
-                    modifier = Modifier
-                        .fillMaxSize(.4f)
-                        .rotate(90f)
-                )
-            }
+                    .fillMaxSize(.4f)
+                    .rotate(90f)
+            )
         }
     }
 }
