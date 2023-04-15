@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.components.MorphPressed
+import com.adwi.neumorph.components.NeuPressed
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -21,7 +21,7 @@ fun SliderLabel(
     backgroundColor: Color = MaterialTheme.colors.background,
     labelColor: Color = MaterialTheme.colors.onBackground,
 ) {
-    MorphPressed(
+    NeuPressed(
         backgroundColor = backgroundColor,
         cornerRadius = cornerRadius,
         elevation = elevation,

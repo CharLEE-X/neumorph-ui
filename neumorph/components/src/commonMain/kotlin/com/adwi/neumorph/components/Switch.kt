@@ -4,7 +4,6 @@ package com.adwi.neumorph.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
@@ -27,26 +26,11 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.components.composables.MorphIcon
+import com.adwi.neumorph.components.composables.NeuIcon
 import com.adwi.neumorph.neumorph.LightSource
 
-/**
- * Neumorph version of Material Switch
- *
- * @param modifier The companion object Modifier is the empty, default, or starter Modifier that contains no elements.
- * @param value off switch: true or false
- * @param onValueChange sets value
- * @param cornerRadius corner radius applied to all corners
- * @param shape applies shape to component
- * @param elevation size of shadow˚ applied to component
- * @param lightSource defines direction to cast shadow
- * @param backgroundColor color applied behind switch indicator
- * @param switchColor color of switch indicator
- * @param lightShadowColor color of lighter shadow
- * @param darkShadowColor color of darker shadow
- */
 @Composable
-fun MorphSwitch(
+fun NeuSwitch(
     modifier: Modifier = Modifier,
     value: Boolean,
     onValueChange: () -> Unit,
@@ -56,21 +40,24 @@ fun MorphSwitch(
     shape: Shape = RoundedCornerShape(cornerRadius),
     elevation: Dp = 10.dp,
     lightSource: LightSource = LightSource.LEFT_TOP,
-    backgroundColor: Color = MaterialTheme.colors.surface,
-    switchColor: Color = MaterialTheme.colors.secondary,
-    lightShadowColor: Color? = null,
-    darkShadowColor: Color? = null,
+    colors: SwitchColors = SwitchColors(
+        backgroundColor = MaterialTheme.colors.surface,
+        indicatorOnColor = MaterialTheme.colors.primary,
+        indicatorOffColor = MaterialTheme.colors.secondary,
+        indicatorIconOnColor = MaterialTheme.colors.onPrimary,
+        indicatorIconOffColor = MaterialTheme.colors.onSecondary,
+    ),
 ) {
     val switchColorState by animateColorAsState(
-        targetValue = if (value) switchColor else MaterialTheme.colors.primaryVariant,
+        targetValue = if (value) colors.indicatorOnColor else colors.indicatorOffColor,
         animationSpec = tween(200),
     )
     val contentColorState by animateColorAsState(
-        targetValue = if (value) MaterialTheme.colors.onSecondary else MaterialTheme.colors.onPrimary,
+        targetValue = if (value) colors.indicatorIconOnColor else colors.indicatorIconOffColor,
         animationSpec = tween(200),
     )
     val translateXState by animateDpAsState(
-        targetValue = if (value) (width + cornerRadius + elevation) else 0.dp,
+        targetValue = if (value) (width + cornerRadius + elevation) else -elevation,
         animationSpec = spring(
             stiffness = 500f,
             dampingRatio = 0.6f
@@ -83,13 +70,13 @@ fun MorphSwitch(
             .width(width)
             .wrapContentSize()
     ) {
-        MorphPressed(
+        NeuPressed(
             onClick = onValueChange,
             cornerRadius = cornerRadius,
-            backgroundColor = backgroundColor,
+            backgroundColor = colors.backgroundColor,
             shape = shape,
-            lightShadowColor = lightShadowColor,
-            darkShadowColor = darkShadowColor,
+            lightShadowColor = colors.lightShadowColor,
+            darkShadowColor = colors.darkShadowColor,
             elevation = elevation,
             lightSource = lightSource,
             modifier = Modifier,
@@ -106,7 +93,7 @@ fun MorphSwitch(
                     translationX = translateXState.value
                 }
         ) {
-            MorphIcon(
+            NeuIcon(
                 icon = Icons.Default.Menu,
                 tint = contentColorState,
                 modifier = Modifier
@@ -145,3 +132,13 @@ fun RoundedIndicator(
         }
     }
 }
+
+data class SwitchColors(
+    val backgroundColor: Color,
+    val indicatorOnColor: Color,
+    val indicatorOffColor: Color,
+    val indicatorIconOnColor: Color,
+    val indicatorIconOffColor: Color,
+    val lightShadowColor: Color? = null,
+    val darkShadowColor: Color? = null,
+)

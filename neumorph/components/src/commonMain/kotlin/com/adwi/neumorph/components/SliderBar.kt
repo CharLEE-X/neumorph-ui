@@ -30,7 +30,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.components.composables.MorphIcon
+import com.adwi.neumorph.components.composables.NeuIcon
 import com.adwi.neumorph.components.composables.MorphSliderThumb
 import com.adwi.neumorph.components.util.slider.SliderValueHorizontal
 import com.adwi.neumorph.neumorph.LightSource
@@ -58,7 +58,7 @@ import com.adwi.neumorph.neumorph.shape.RoundedCorner
  * @param darkShadowColor color of darker shadow
  */
 @Composable
-fun MorphSliderBar(
+fun NeuSliderBar(
     modifier: Modifier = Modifier,
     value: Float = 20f,
     onValueChange: (Float) -> Unit,
@@ -135,7 +135,7 @@ fun MorphSliderBar(
                             scaleX = scaleState
                         }
                 ) {
-                    MorphIcon(
+                    NeuIcon(
                         icon = Icons.Default.Menu,
                         tint = iconColor,
                         modifier = Modifier

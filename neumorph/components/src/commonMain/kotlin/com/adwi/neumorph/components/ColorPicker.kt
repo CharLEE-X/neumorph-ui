@@ -16,7 +16,7 @@ import com.adwi.neumorph.components.composables.picker.HueBar
 import com.adwi.neumorph.neumorph.LightSource
 
 @Composable
-fun MorphColorPicker(
+fun NeuColorPicker(
     modifier: Modifier = Modifier,
     color: Color = Color.Green,
     onColorChanged: (HsvColor) -> Unit,

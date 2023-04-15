@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.components.MorphButtonOval
+import com.adwi.neumorph.components.NeuButtonOval
 
 @Composable
 fun TopBar(
@@ -26,7 +26,7 @@ fun TopBar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.padding(32.dp)
     ) {
-        MorphButtonOval(
+        NeuButtonOval(
             modifier = Modifier
         ) {
             IconButton(

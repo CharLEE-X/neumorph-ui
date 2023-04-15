@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.adwi.neumorph.components.MorphPunched
+import com.adwi.neumorph.components.NeuPunched
 import com.adwi.neumorph.neumorph.LightSource
 
 @Composable
@@ -32,7 +32,7 @@ fun MorphSliderThumb(
     darkShadowColor: Color? = null,
     content: @Composable () -> Unit,
 ) {
-    MorphPunched(
+    NeuPunched(
         onClick = {},
         cornerRadius = cornerRadius,
         elevation = elevation,

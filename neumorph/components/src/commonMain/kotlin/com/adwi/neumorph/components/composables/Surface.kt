@@ -38,7 +38,7 @@ fun MorphSurface(
         shape = shape,
         contentColor = contentColor,
         border = border,
-        color = Color.Transparent,
+        color = backgroundColor,
         modifier = modifier
             .clip(RoundedCornerShape(cornerRadius))
             .clickable(

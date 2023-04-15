@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MorphIcon(
+fun NeuIcon(
     modifier: Modifier = Modifier,
     icon: ImageVector = Icons.Default.ThumbUp,
     contentDescription: String = "",

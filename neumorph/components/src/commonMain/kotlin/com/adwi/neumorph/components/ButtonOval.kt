@@ -25,7 +25,7 @@ import com.adwi.neumorph.neumorph.shape.Punched
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MorphButtonOval(
+fun NeuButtonOval(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     elevation: Dp = 10.dp,

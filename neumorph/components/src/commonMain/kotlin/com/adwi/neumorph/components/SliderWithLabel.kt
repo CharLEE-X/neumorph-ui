@@ -64,7 +64,7 @@ fun MorphSlider(
                 )
             }
         }
-        MorphSliderBar(
+        NeuSliderBar(
             value = value,
             onValueChange = onValueChange,
             valueRange = valueRange,

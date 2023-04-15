@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.adwi.neumorph.components.MorphPressed
+import com.adwi.neumorph.components.NeuPressed
 import com.adwi.neumorph.components.composables.ColorPicker
 import com.adwi.neumorph.neumorph.LightSource
 import com.adwi.neumorph.sample.ui.theme.pickerColors
@@ -233,7 +233,7 @@ fun ItemHeader(
         animationSpec = tween(duration)
     )
 
-    MorphPressed(
+    NeuPressed(
         backgroundColor = Color.Transparent,
         elevation = elevationState,
         cornerRadius = cornerState,
@@ -281,7 +281,7 @@ fun HomeItemPreviewLight() {
         darkTheme = false,
     ) {
         ItemPanel(title = "Coming soon") { elevation, corners, color, lightSource ->
-            MorphPressed(
+            NeuPressed(
                 elevation = elevation.dp,
                 cornerRadius = corners.dp,
                 backgroundColor = color ?: MaterialTheme.colors.surface,
@@ -301,7 +301,7 @@ private fun HomeItemPreviewDark() {
         darkTheme = true,
     ) {
         ItemPanel(title = "Coming soon") { elevation, corners, color, lightSource ->
-            MorphPressed(
+            NeuPressed(
                 elevation = elevation.dp,
                 cornerRadius = corners.dp,
                 lightSource = lightSource,

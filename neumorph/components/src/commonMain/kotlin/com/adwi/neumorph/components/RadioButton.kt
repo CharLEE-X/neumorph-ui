@@ -1,10 +1,15 @@
 package com.adwi.neumorph.components
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,33 +29,20 @@ import com.adwi.neumorph.neumorph.neu
 import com.adwi.neumorph.neumorph.shape.Oval
 import com.adwi.neumorph.neumorph.shape.Pressed
 
-/**
- * Neumorph version of Material Radio Button
- *
- * @param modifier The companion object Modifier is the empty, default, or starter Modifier that contains no elements.
- * @param value off switch: true or false
- * @param onValueChange sets value
- * @param cornerRadius corner radius applied to all corners
- * @param shape applies shape to component
- * @param elevation size of shadow applied to component
- * @param lightSource defines direction to cast shadow
- * @param backgroundColor color applied behind Radio Button indicator
- * @param switchColor color of Radio Button indicator
- * @param lightShadowColor color of lighter shadow
- * @param darkShadowColor color of darker shadow
- */
 @Composable
-fun MorphRadioButton(
+fun NeuRadioButton(
     modifier: Modifier = Modifier,
     value: Boolean,
     onValueChange: () -> Unit,
-    elevation: Dp = 3.dp,
+    size: Dp = 40.dp,
+    elevation: Dp = 10.dp,
     lightSource: LightSource = LightSource.LEFT_TOP,
-    backgroundColor: Color = Color.Transparent,
-    radioColor: Color = MaterialTheme.colors.primary,
-    lightShadowColor: Color? = null,
-    darkShadowColor: Color? = null,
-    indicatorScale: Float = .8f
+    indicatorScale: Float = .8f,
+    colors: RadioButtonColors = RadioButtonColors(
+        indicatorColor = MaterialTheme.colors.secondary,
+        lightShadowColor = null,
+        darkShadowColor = null
+    ),
 ) {
     val elevationState by animateDpAsState(
         targetValue = if (value) elevation + 5.dp else elevation,
@@ -74,6 +66,7 @@ fun MorphRadioButton(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
+            .size(size)
             .clickable(
                 onClick = onValueChange,
                 indication = null,
@@ -83,22 +76,23 @@ fun MorphRadioButton(
         MorphSurface(
             onClick = onValueChange,
             cornerRadius = 0.dp,
-            backgroundColor = backgroundColor,
-            contentColor = Color.Transparent,
+            backgroundColor = colors.backgroundColor,
+            contentColor = colors.backgroundColor,
             border = null,
             scale = 1f,
             interactionSource = MutableInteractionSource(),
             hasIndication = false,
+            content = {},
             modifier = Modifier
                 .fillMaxSize()
                 .neu(
-                    lightShadowColor = lightShadowColor,
-                    darkShadowColor = darkShadowColor,
+                    lightShadowColor = colors.lightShadowColor,
+                    darkShadowColor = colors.darkShadowColor,
                     shadowElevation = elevationState,
                     lightSource = lightSource,
                     shape = Pressed(Oval)
                 )
-        ) { }
+        )
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -106,7 +100,7 @@ fun MorphRadioButton(
         ) {
             Surface(
                 shape = CircleShape,
-                color = radioColor,
+                color = colors.indicatorColor,
                 modifier = Modifier
                     .fillMaxSize()
                     .clip(CircleShape)
@@ -121,3 +115,10 @@ fun MorphRadioButton(
         }
     }
 }
+
+data class RadioButtonColors(
+    val backgroundColor: Color = Color.Transparent,
+    val indicatorColor: Color,
+    val lightShadowColor: Color? = null,
+    val darkShadowColor: Color? = null,
+)

@@ -37,7 +37,7 @@ import com.adwi.neumorph.neumorph.shape.RoundedCorner
  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MorphPunched(
+fun NeuPunched(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     cornerRadius: Dp = 20.dp,
